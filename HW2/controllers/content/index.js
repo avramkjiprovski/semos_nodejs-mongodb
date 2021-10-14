@@ -1,5 +1,5 @@
-const Content = require('../../core/content');
-const express = require('express');
+const Content = require("../../core/content");
+const express = require("express");
 
 const getAllContent = async (req, res, next) => {
   try {
@@ -21,12 +21,15 @@ const addNewContent = async (request, response, next) => {
   const content = request.body;
   // Simple validation for falsy values
   if (!content.content || !content.element_type || content.content.length < 2) {
-    return response.status(400).json('Error in request!');
+    return response.status(400).json("Error in request!");
   }
 
   try {
-    await Content.addNewContent({ element_type: content.element_type, content: content.content });
-    return response.status(201).json('Song added!');
+    await Content.addNewContent({
+      element_type: content.element_type,
+      content: content.content,
+    });
+    return response.status(201).json("Content added!");
   } catch (error) {
     return response.status(500).json(error);
   }
