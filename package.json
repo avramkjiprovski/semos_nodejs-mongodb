@@ -17,5 +17,6 @@
   },
   "homepage": "https://github.com/avramkjiprovski/semos_nodejs-mongodb#readme",
   "dependencies": {
+    "swagger-ui-express": "^4.1.6"
   }
 }
