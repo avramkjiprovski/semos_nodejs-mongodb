@@ -49,7 +49,8 @@ const editPlanet = async (req, res, next) => {
 const deletePlanet = async (req, res, next) => {
     try {
         if(!req.params.id) res.status(400).json("Missing ID!")
-        else if()
+        else if(Planet.deletePlanet(req.params.id)) res.status(200).json(`Element with id ${req.params.id} deleted successfully!`)
+        else res.status(500).json("Element does not exist!")
     } catch (error) {
         console.log(error)
     }
