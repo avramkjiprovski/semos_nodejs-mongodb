@@ -102,7 +102,7 @@ const getPlanet = (id) => {
  * @param {object} req 
  * @returns {object || number}
  */
-const editPlanet = async (req) => {
+const editPlanet = (req) => {
     let toReturn = 500
     planets.map( (element, index) => {
         if(element.id == req.params.id){
@@ -112,9 +112,29 @@ const editPlanet = async (req) => {
     return toReturn
 }
 
+/**
+ * 
+ * @param {object} toDelete 
+ * @returns {boolean}
+ */
+const deletePlanet = (id) => {
+    let toRemove
+    planets.map( (element, index) => {
+        if(element.id == id){
+            toRemove = index
+        }
+    })
+
+    if(planets.splice(toRemove, 1)) return true
+    return false
+
+
+}
+
 module.exports = {
     getAllPlanets,
     addPlanet,
     getPlanet,
-    editPlanet
+    editPlanet,
+    deletePlanet
 }

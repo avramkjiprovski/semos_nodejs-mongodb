@@ -38,10 +38,20 @@ const editPlanet = async (req, res, next) => {
         let returnVal = await Planet.editPlanet(req)
         if(!req.body.id || !req.body.name) res.status(400).json("Bad Request, missing info!")
         else if(returnVal != 500) res.status(200).json(returnVal)
-        
+
         res.status(500).json("You failed us")
     }catch(err){
         console.log(err)
+    }
+}
+
+
+const deletePlanet = async (req, res, next) => {
+    try {
+        if(!req.params.id) res.status(400).json("Missing ID!")
+        else if()
+    } catch (error) {
+        console.log(error)
     }
 }
 
@@ -49,7 +59,8 @@ module.exports = {
     getAllPlanets,
     addPlanet,
     getPlanet,
-    editPlanet
+    editPlanet,
+    deletePlanet
 }
 
 
