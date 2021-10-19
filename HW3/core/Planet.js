@@ -34,11 +34,20 @@ let planets = [
     
 ]
 
-
+/**
+ * 
+ * @returns {array of objects}
+ */
 const getAllPlanets = () => {
     return planets
 }
 
+/**
+ * 
+ * @param {*} planets 
+ * @param {*} planet 
+ * @returns {boolean}
+ */
 const checkDuplicates = (planets, planet) => {
     let duplicate = false
     planets.map(item => {
@@ -73,7 +82,23 @@ const addPlanet = (planet) => {
 
 }
 
+
+/**
+ * 
+ * @param {*} id 
+ * @returns {object}
+ */
+const getPlanet = (id) => {
+    let toReturn = 500
+    planets.map( (element) => {
+        if(element.id == id) toReturn = element
+    })
+
+    return toReturn
+}
+
 module.exports = {
     getAllPlanets,
-    addPlanet
+    addPlanet,
+    getPlanet
 }

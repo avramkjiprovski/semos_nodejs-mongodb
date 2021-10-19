@@ -23,9 +23,20 @@ const addPlanet = async (req, res, next) => {
     }
 }
 
+const getPlanet = async (req, res, next) => {
+    try{
+        const planet = await Planet.getPlanet(req.params.id)
+        if(planet === 500) res.status(500).json("Internal error!")
+        res.status(200).json(planet)
+    }catch(err){
+        console.log(err)
+    }
+}
+
 module.exports = {
     getAllPlanets,
-    addPlanet
+    addPlanet,
+    getPlanet
 }
 
 
