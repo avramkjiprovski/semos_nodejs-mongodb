@@ -33,10 +33,23 @@ const getPlanet = async (req, res, next) => {
     }
 }
 
+const editPlanet = async (req, res, next) => {
+    try {
+        let returnVal = await Planet.editPlanet(req)
+        if(!req.body.id || !req.body.name) res.status(400).json("Bad Request, missing info!")
+        else if(returnVal != 500) res.status(200).json(returnVal)
+        
+        res.status(500).json("You failed us")
+    }catch(err){
+        console.log(err)
+    }
+}
+
 module.exports = {
     getAllPlanets,
     addPlanet,
-    getPlanet
+    getPlanet,
+    editPlanet
 }
 
 

@@ -97,8 +97,24 @@ const getPlanet = (id) => {
     return toReturn
 }
 
+/**
+ * 
+ * @param {object} req 
+ * @returns {object || number}
+ */
+const editPlanet = async (req) => {
+    let toReturn = 500
+    planets.map( (element, index) => {
+        if(element.id == req.params.id){
+            toReturn = planets[index] = req.body
+        }
+    })
+    return toReturn
+}
+
 module.exports = {
     getAllPlanets,
     addPlanet,
-    getPlanet
+    getPlanet,
+    editPlanet
 }
